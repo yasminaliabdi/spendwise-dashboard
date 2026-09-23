@@ -1,0 +1,329 @@
+/* ====== THEME VARIABLES ====== */
+
+:root {
+    --brand: #0d9488;
+    --brand-dark: #0f766e;
+    --accent: #f59e0b;
+    --surface: #ffffff;
+    --surface-alt: #f1f5f9;
+    --bg: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 250ms ease;
+}
+
+/* ====== DARK THEME ====== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand: #14b8a6;
+        --brand-dark: #0d9488;
+        --accent: #fbbf24;
+        --surface: #1e293b;
+        --surface-alt: #334155;
+        --bg: #0f172a;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --border: #334155;
+    }
+}
+
+/* ====== RESET & BASE ====== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ====== DASHBOARD GRID LAYOUT ====== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+    min-height: 100vh;
+}
+
+/* ====== SIDEBAR ====== */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--brand);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.nav-item:hover,
+.nav-item:focus {
+    background-color: var(--surface-alt);
+    color: var(--text-primary);
+    outline: none;
+}
+
+.nav-item.active {
+    background-color: var(--brand);
+    color: white;
+}
+
+.nav-icon {
+    font-size: 18px;
+}
+
+/* ====== HEADER ====== */
+
+.header {
+    grid-area: header;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-title h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-title p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition);
+}
+
+.btn-icon:hover {
+    background-color: var(--surface-alt);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--brand);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* ====== MAIN CONTENT ====== */
+
+.main {
+    grid-area: main;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ====== SUMMARY CARDS ====== */
+
+.summary {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    flex: 1;
+    min-width: 180px;
+    background-color: var(--surface);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.summary-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.summary-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.summary-value.positive {
+    color: var(--brand);
+}
+
+.summary-value.negative {
+    color: #ef4444;
+}
+
+/* ====== CATEGORY CARDS ====== */
+
+.categories h2 {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--surface);
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover,
+.card:focus {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--brand);
+    outline: none;
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.card-amount {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brand);
+}
+
+.card-percent {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main";
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 16px;
+    }
+
+    .nav {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+    }
+
+    .nav-item span:not(.nav-icon) {
+        display: none;
+    }
+
+    .header {
+        padding: 16px 20px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .summary {
+        flex-direction: column;
+    }
+}

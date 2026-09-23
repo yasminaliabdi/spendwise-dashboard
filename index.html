@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">💰</span>
+                <span class="logo-text">SpendWise</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">💸</span>
+                    <span>Expenses</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Reports</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🎯</span>
+                    <span>Goals</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1>Dashboard</h1>
+                <p>Welcome back, Yasmin</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon">🔔</button>
+                <div class="avatar">YA</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Summary Cards -->
+            <section class="summary">
+                <div class="summary-card">
+                    <p class="summary-label">Total Balance</p>
+                    <p class="summary-value">KSh 45,200</p>
+                </div>
+                <div class="summary-card">
+                    <p class="summary-label">Income</p>
+                    <p class="summary-value positive">+ KSh 80,000</p>
+                </div>
+                <div class="summary-card">
+                    <p class="summary-label">Expenses</p>
+                    <p class="summary-value negative">- KSh 34,800</p>
+                </div>
+            </section>
+
+            <!-- Category Cards -->
+            <section class="categories">
+                <h2>Categories</h2>
+                <div class="category-grid">
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">🍔</div>
+                        <h3>Food</h3>
+                        <p class="card-amount">KSh 8,500</p>
+                        <p class="card-percent">24% of expenses</p>
+                    </div>
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">🚗</div>
+                        <h3>Transport</h3>
+                        <p class="card-amount">KSh 3,200</p>
+                        <p class="card-percent">9% of expenses</p>
+                    </div>
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">🏠</div>
+                        <h3>Rent</h3>
+                        <p class="card-amount">KSh 15,000</p>
+                        <p class="card-percent">43% of expenses</p>
+                    </div>
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">🎬</div>
+                        <h3>Entertainment</h3>
+                        <p class="card-amount">KSh 2,100</p>
+                        <p class="card-percent">6% of expenses</p>
+                    </div>
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">🏦</div>
+                        <h3>Savings</h3>
+                        <p class="card-amount">KSh 4,000</p>
+                        <p class="card-percent">11% of expenses</p>
+                    </div>
+
+                    <div class="card" tabindex="0">
+                        <div class="card-icon">💡</div>
+                        <h3>Utilities</h3>
+                        <p class="card-amount">KSh 2,000</p>
+                        <p class="card-percent">6% of expenses</p>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
