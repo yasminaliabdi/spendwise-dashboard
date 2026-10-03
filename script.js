@@ -1,74 +1,107 @@
 // ============================================
-// SpendWise - Budget Calculator
+// SpendWise - Interactive Budget Dashboard
 // ============================================
 
 // --- Variables: Store Application Data ---
 
-// Budget data
-let monthlyBudget = 0;
-let totalExpenses = 0;
-let remainingBalance = 0;
+let monthlyBudget = 50000;
+let expenses = [];  // Array to store expense records
 
-// Expense categories
-const categories = ["Food", "Transport", "Rent", "Entertainment", "Savings", "Utilities"];
+// --- Function: Add Expense to Array ---
 
-// --- Function: Get User Budget ---
-
-function getBudget() {
-    let input = prompt("Enter your monthly budget (KSh):");
-    monthlyBudget = Number(input);
-    return monthlyBudget;
+function addExpense(name, amount, category) {
+    expenses.push({
+        name: name,
+        amount: amount,
+        category: category
+    });
 }
 
-// --- Function: Get Expense Amounts ---
+// --- Function: Calculate Total Expenses ---
 
-function getExpenses() {
+function calculateTotalExpenses() {
     let total = 0;
-
-    for (let i = 0; i < categories.length; i++) {
-        let input = prompt("Enter amount spent on " + categories[i] + " (KSh):");
-        let amount = Number(input);
-
-        if (!isNaN(amount) && amount > 0) {
-            total += amount;
-        }
+    for (let i = 0; i < expenses.length; i++) {
+        total += expenses[i].amount;
     }
-
     return total;
 }
 
 // --- Function: Calculate Remaining Balance ---
 
-function calculateBalance(budget, expenses) {
-    return budget - expenses;
+function calculateBalance(budget, totalExpenses) {
+    return budget - totalExpenses;
 }
 
-// --- Function: Display Results ---
+// --- Function: Get Budget Feedback (Conditionals) ---
 
-function displayResults(budget, expenses, balance) {
-    console.log("========================================");
-    console.log("        SPENDWISE BUDGET SUMMARY        ");
-    console.log("========================================");
-    console.log("Monthly Budget:   KSh " + budget.toFixed(2));
-    console.log("Total Expenses:   KSh " + expenses.toFixed(2));
-    console.log("Remaining Balance: KSh " + balance.toFixed(2));
-    console.log("========================================");
-
+function getBudgetFeedback(balance) {
     if (balance < 0) {
-        console.log("⚠️  WARNING: You are over budget!");
+        return "⚠️ Over budget! You are spending more than you earn.";
     } else if (balance === 0) {
-        console.log("✅ You spent exactly your budget.");
+        return "⚖️ You spent exactly your budget.";
+    } else if (balance < monthlyBudget * 0.2) {
+        return "⚠️ Warning: Less than 20% of your budget remains.";
     } else {
-        console.log("✅ Good job! You are within budget.");
+        return "✅ Good job! You are within budget.";
     }
 }
 
-// --- Main Program ---
+// --- Function: Update the DOM ---
 
-console.log("Welcome to SpendWise!");
+function updateDashboard() {
+    // Calculate totals
+    let totalExpenses = calculateTotalExpenses();
+    let balance = calculateBalance(monthlyBudget, totalExpenses);
 
-monthlyBudget = getBudget();
-totalExpenses = getExpenses();
-remainingBalance = calculateBalance(monthlyBudget, totalExpenses);
+    // Update summary cards
+    document.getElementById("total-balance").textContent = "KSh " + balance.toLocaleString();
+    document.getElementById("total-income").textContent = "+ KSh " + monthlyBudget.toLocaleString();
+    document.getElementById("total-expenses").textContent = "- KSh " + totalExpenses.toLocaleString();
 
-displayResults(monthlyBudget, totalExpenses, remainingBalance);
+    // Update feedback message
+    let feedback = getBudgetFeedback(balance);
+    document.getElementById("feedback").textContent = feedback;
+
+    // Update the expense list
+    let list = document.getElementById("expense-list");
+    list.innerHTML = "";
+
+    for (let i = 0; i < expenses.length; i++) {
+        let item = document.createElement("li");
+        item.textContent = expenses[i].name + " - KSh " + expenses[i].amount + " (" + expenses[i].category + ")";
+        list.appendChild(item);
+    }
+}
+
+// --- Function: Handle Add Expense Button ---
+
+function handleAddExpense() {
+    let name = document.getElementById("expense-name").value;
+    let amount = Number(document.getElementById("expense-amount").value);
+    let category = document.getElementById("expense-category").value;
+
+    // Validate input
+    if (name === "" || isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid expense name and amount.");
+        return;
+    }
+
+    // Add to array
+    addExpense(name, amount, category);
+
+    // Clear input fields
+    document.getElementById("expense-name").value = "";
+    document.getElementById("expense-amount").value = "";
+
+    // Update the page
+    updateDashboard();
+}
+
+// --- Event Listener: Connect the Button ---
+
+document.getElementById("add-expense-btn").addEventListener("click", handleAddExpense);
+
+// --- Initial Load: Show the Dashboard ---
+
+updateDashboard();

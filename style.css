@@ -288,6 +288,112 @@ h1, h2, h3 {
     color: var(--text-secondary);
 }
 
+/* ====== ADD EXPENSE FORM ====== */
+
+.add-expense {
+    background-color: var(--surface);
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.add-expense h2 {
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background-color: var(--surface);
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--brand);
+}
+
+#add-expense-btn {
+    background-color: var(--brand);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#add-expense-btn:hover {
+    background-color: var(--brand-dark);
+}
+
+/* ====== FEEDBACK MESSAGE ====== */
+
+.feedback-section {
+    background-color: var(--surface);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+#feedback {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ====== EXPENSE LIST ====== */
+
+.expense-list-section {
+    background-color: var(--surface);
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.expense-list-section h2 {
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+}
+
+#expense-list {
+    list-style: none;
+    padding: 0;
+}
+
+#expense-list li {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+#expense-list li:last-child {
+    border-bottom: none;
+}
+
 /* ====== RESPONSIVE DESIGN ====== */
 
 @media (max-width: 768px) {
